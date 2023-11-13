@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import './assets/styles/App.css';
+import Home from './pages/Home';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import Inner from './pages/Inner';
+import { PanelProvider } from './contexts/PanelContext';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Provider store={store}>
+        <PanelProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/inner" element={<Inner />} />
+          </Routes>
+        </PanelProvider>
+      </Provider>
+    </BrowserRouter>
   );
 }
 

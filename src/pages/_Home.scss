@@ -1,0 +1,71 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Regular.woff2') format('woff2'), 
+         url('../fonts/Montserrat-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Bold.woff2') format('woff2'), 
+         url('../fonts/Montserrat-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+  }  
+
+$main-font: 'Montserrat';
+$oxford: #222935;
+$green: #26C17E;
+$lightgrey: #667081;
+$white: #fff;
+
+.home {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: $main-font;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+    margin: 0;
+}
+
+.home-name {
+    font-weight: 600;
+}
+
+.home-position {
+    font-weight: 300;
+}
+
+.home-text {
+    font-weight: 100;
+}
+
+.home-button {
+    width: 150px;
+    height: 50px;
+    margin-left: 37%;
+    border-radius: 30px;
+    cursor: pointer;
+    background-color: $oxford;
+    color: $white;
+    text-decoration: none; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px; 
+
+    &:hover {
+        background-color: $green;
+        color: $oxford;
+    } 
+}
+
+.home-button-text {
+    text-decoration: none !important;
+    border: none !important;
+    font-size: 16px;
+}
