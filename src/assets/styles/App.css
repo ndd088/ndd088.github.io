@@ -19,10 +19,10 @@ body {
 .inner {
   background-color: #fff;
   min-height: 100vh;
-  width: 70%;
+  width: 80%;
   display: grid;
   grid-template-columns: 2% 98%;
-  grid-template-rows: 10% 15% 15% 15% 12% 20%;
+  grid-template-rows: 15% 10% 15% 25% 20% 15%;
   row-gap: 2%;
   box-sizing: border-box;
   transition: margin-left 0.2s;
@@ -31,7 +31,6 @@ body {
 
 /* Panel */
 .panel {
-  background-color: #222935;
   text-align: center;
   color: #667081;
   font-weight: 400;
@@ -44,7 +43,7 @@ body {
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  width: 30%;
+  width: 20%;
 }
 
 .panel.open {
@@ -52,14 +51,14 @@ body {
 }
 
 .panel.open + .inner {
-  margin-left: 30%;
+  margin-left: 20%;
 }
 
 .go-back-icon {
   display: block;
   margin-top: auto;
   margin-bottom: 20px;
-  color: #26C17E;
+  color: #1f2a38;
   text-decoration: none;
 }
 
@@ -79,11 +78,9 @@ body {
 
 /* Navigation */
 .navigation-menu {
-  background-color: #222935;
   display: block;
   color: #667081;
   transition: color 0.2s;
-  width: 30%;
 }
 
 .navigation-menu__ul {
@@ -97,17 +94,17 @@ body {
   align-items: center;
   text-decoration: none;
   font-weight: 400;
-  color: #667081;
+  color: #fff;
   transition: color 0.2s;
   margin-bottom: 20px;
   padding: 5px;
   border-radius: 5px;
-  width: 120px;
+  width: 150px;
   cursor: pointer;
 }
 .navigation-menu__ul-li a:hover {
-  background-color: #26C17E;
-  color: #222935;
+  background-color: #fff;
+  color: #1f2a38;
 }
 .navigation-menu__ul-li a svg {
   width: 18px;
@@ -117,18 +114,18 @@ body {
 
 .navigation-menu__ul-li .active-link {
   font-weight: 700;
-  color: #26C17E;
+  color: #1f2a38;
   background-color: #222935;
 }
 
 /* Portfolio */
 .portfolio-main {
   grid-column: 2;
-  grid-row: 4/5;
+  grid-row: 5/6;
   margin-right: 20px;
 }
 .portfolio-main h2 {
-  color: #26C17E;
+  color: #1f2a38;
   padding-top: 30px;
 }
 
@@ -148,7 +145,7 @@ body {
 }
 .portfolio .portfolio-categories button:hover {
   background-color: transparent;
-  color: #1e9662;
+  color: #0d1117;
 }
 .portfolio .portfolio-items {
   display: flex;
@@ -195,7 +192,7 @@ body {
   margin-bottom: 10px;
 }
 .portfolio .portfolio-items .portfolio-item .portfolio-text a {
-  color: #26C17E;
+  color: #1f2a38;
   text-decoration: none;
 }
 .portfolio .portfolio-items .portfolio-item .portfolio-text a:hover {
@@ -231,10 +228,10 @@ body {
 /* Feedback */
 .feedback {
   grid-column: 2;
-  grid-row: 6;
+  grid-row: 7;
 }
 .feedback h2 {
-  color: #26C17E;
+  color: #1f2a38;
 }
 
 .feedback-list {
@@ -275,7 +272,7 @@ body {
 }
 .feedback-list li .reporter a {
   font-size: 14px;
-  color: #26C17E;
+  color: #1f2a38;
   text-decoration: none;
 }
 .feedback-list li .reporter a:hover {
@@ -290,7 +287,7 @@ body {
   margin-right: 20px;
 }
 .box h2 {
-  color: #26C17E;
+  color: #1f2a38;
   font-size: 24px;
 }
 .box p {
@@ -299,7 +296,7 @@ body {
 
 /* Button */
 .btn {
-  background-color: #26C17E;
+  background-color: #1f2a38;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -314,7 +311,7 @@ body {
 }
 
 .btn:hover {
-  background-color: #1e9662;
+  background-color: #0d1117;
 }
 
 .btn-text {
@@ -334,6 +331,7 @@ body {
 }
 .photo-box h2 {
   font-size: 24px;
+  color: #fff;
 }
 .photo-box p {
   font-size: 18px;
@@ -364,8 +362,10 @@ body {
 }
 .timeline .timeline-event .event-details h3 {
   font-size: 18px;
+  padding-left: 10px;
 }
 .timeline .timeline-event .event-details p {
+  padding-left: 10px;
   font-size: 12px;
 }
 
@@ -375,7 +375,7 @@ body {
   margin-right: 20px;
 }
 .education div > h2 {
-  color: #26C17E;
+  color: #1f2a38;
   padding-top: 30px;
 }
 
@@ -393,19 +393,20 @@ body {
   color: #222935;
 }
 #root > div > div:nth-child(4) div > h2 {
-  color: #26C17E;
+  color: #1f2a38;
 }
 
 .address {
   color: #222935;
 }
 
+/*Contacts*/
 .contacts {
   grid-column: 2;
-  grid-row: 5;
+  grid-row: 6;
 }
 .contacts div > h2 {
-  color: #26C17E;
+  color: #1f2a38;
 }
 .contacts div > p:nth-child(4) {
   display: grid;
@@ -437,6 +438,211 @@ body {
   margin-left: 20px;
 }
 
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  grid-row: 4;
+  grid-column: 2;
+}
+.skills-container h2 {
+  color: #1f2a38;
+  padding-top: 30px;
+}
+.skills-container .loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+.skills-container .error {
+  text-align: center;
+  color: red;
+}
+.skills-container ul {
+  list-style: none;
+  padding: 0;
+}
+.skills-container ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+.skills-container ul li p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.skills-form {
+  margin-top: 20px;
+}
+
+.skills-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.skills-form input {
+  width: 40%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.skills-form button {
+  width: 20%;
+  background-color: #1f2a38;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.skills-form button:disabled {
+  background-color: #f3f1f1;
+  cursor: not-allowed;
+}
+
+.skill-bar {
+  height: 20px;
+  background-color: #fff;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+#myProgress {
+  max-width: 100%;
+  background-color: #fff;
+  border: 1px solid #f3f1f1;
+  height: 30px;
+  row-gap: 1px;
+}
+
+#myBar {
+  width: 100%;
+  height: 100%;
+  background-color: #1f2a38;
+  text-align: left;
+  line-height: 30px;
+  color: white;
+  border-radius: 5px;
+}
+
+.skill-progress {
+  height: 100%;
+  background-color: #1f2a38;
+}
+
+.btn-openSkills {
+  width: 20%;
+  background-color: #222935;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.btn-openSkills:hover {
+  background-color: #0d1117;
+}
+
+.skills-stats {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.skill-stat {
+  flex-grow: 1;
+  padding-right: 10px;
+  background-color: #fff;
+  border: none;
+}
+
+.skill-stat1 {
+  text-align: left;
+}
+
+.skill-stat2 {
+  text-align: center;
+}
+
+.skill-stat3 {
+  text-align: center;
+}
+
+.skill-stat4 {
+  text-align: right;
+}
+
+.skills-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skills-list li {
+  margin-bottom: 10px;
+}
+
+.liners {
+  width: 100%;
+  height: 20px;
+  display: flex;
+}
+
+.liner1 {
+  border-bottom: 1px solid #222935;
+  border-left: 1px solid #222935;
+  border-right: 1px solid #222935;
+  flex-grow: 1;
+  text-align: left;
+}
+
+.liner2 {
+  border-bottom: 1px solid #222935;
+  border-left: none;
+  border-right: none;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.liner3 {
+  border-bottom: 1px solid #222935;
+  border-left: 1px solid #222935;
+  border-right: 1px solid #222935;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.liner4 {
+  border-bottom: 1px solid #222935;
+  border-left: 1px solid #222935;
+  border-right: 1px solid #222935;
+  flex-grow: 1;
+  text-align: right;
+}
+
+.timeline-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.error-message {
+  text-align: center;
+}
+
 @media only screen and (min-width: 140px) and (max-width: 767px) {
   .panel {
     width: 30%;
@@ -459,6 +665,26 @@ body {
     display: none;
   }
 }
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.error {
+  text-align: center;
+  padding: 20px;
+  background-color: #ffcccc;
+  color: #990000;
+}
+
 @font-face {
   font-family: "Montserrat";
   src: url("../fonts/Montserrat-Regular.woff2") format("woff2"), url("../fonts/Montserrat-Regular.woff") format("woff");
@@ -510,8 +736,8 @@ body {
   margin-top: 20px;
 }
 .home-button:hover {
-  background-color: #26C17E;
-  color: #222935;
+  background-color: #022a88;
+  color: #fff;
 }
 
 .home-button-text {

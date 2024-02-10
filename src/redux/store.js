@@ -1,10 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from './reducers';
+import skillsReducer, { localStorageMiddleware } from './skillsSlice';
+import educationsReducer from './educationsSlice';
 
 const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    skills: skillsReducer,
+    educations: educationsReducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(localStorageMiddleware),
 });
 
 export default store;

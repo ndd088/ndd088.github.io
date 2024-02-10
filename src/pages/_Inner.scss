@@ -17,7 +17,8 @@
  
  $main-font: 'Montserrat', sans-serif;
  $oxford: #222935;
- $green: #26C17E;
+ $green: #1f2a38;
+ //#26C17E;
  $lightgrey: #667081;
  $white: #fff;
  $grey-background: #f3f1f1;
@@ -30,10 +31,10 @@
 .inner {
     background-color: $white; 
     min-height: 100vh;
-    width: 70%;
+    width: 80%;
     display: grid;
     grid-template-columns: 2% 98%;
-    grid-template-rows: 10% 15% 15% 15% 12% 20%;
+    grid-template-rows: 15% 10% 15% 25% 20% 15%;
     row-gap: 2%;
     box-sizing: border-box;
     transition: margin-left 0.2s; 
@@ -42,7 +43,7 @@
   
   /* Panel */
 .panel {
-    background-color: $oxford;
+    //background-color: $oxford;
     text-align: center;
     color: $lightgrey;
     font-weight: 400;
@@ -55,7 +56,7 @@
     flex-direction: column;
     align-items: center;
     height: 100vh;
-    width: 30%;
+    width: 20%;
   }
 
   .panel.open {
@@ -63,7 +64,7 @@
   }
 
   .panel.open + .inner {
-    margin-left: 30%;
+    margin-left: 20%;
   }
   
   .go-back-icon {
@@ -90,11 +91,9 @@
   
   /* Navigation */
   .navigation-menu {
-    background-color: $oxford;
     display: block;
     color: $lightgrey;
     transition: color 0.2s;
-    width: 30%;
   }
   
   .navigation-menu__ul {
@@ -108,17 +107,17 @@
     align-items: center;
     text-decoration: none;
     font-weight: 400;
-    color: $lightgrey;
+    color: $white;
     transition: color 0.2s;
     margin-bottom: 20px;
     padding: 5px;
     border-radius: 5px;
-    width: 120px;
+    width: 150px;
     cursor: pointer;
   
     &:hover {
-      background-color: $green;
-      color: $oxford;
+      background-color: $white;
+      color: $green;
     }
   
     svg {
@@ -137,7 +136,7 @@
 /* Portfolio */
 .portfolio-main {
     grid-column: 2;
-    grid-row: 4 / 5;
+    grid-row: 5 / 6;
     margin-right: 20px;
   
     h2 {
@@ -265,7 +264,7 @@
 /* Feedback */
 .feedback {
     grid-column: 2;
-    grid-row: 6;
+    grid-row: 7;
 
     h2 {
         color: $green;
@@ -380,6 +379,7 @@
   
     h2 {
       font-size: 24px;
+      color: $white;
     }
   
     p {
@@ -414,9 +414,11 @@
 
         h3 {
           font-size: 18px;
+          padding-left: 10px;
         }
   
         p {
+          padding-left: 10px;
           font-size: 12px;
         }
       }
@@ -456,9 +458,10 @@
     color: $oxford;
 }
 
+/*Contacts*/
 .contacts {
     grid-column: 2;
-    grid-row: 5;
+    grid-row: 6;
 
     div > h2 {
         color: $green;
@@ -499,6 +502,217 @@
     margin-left: 20px;
 }
 
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  grid-row: 4;
+  grid-column: 2;
+
+  h2 {
+    color: $green;
+    padding-top: 30px;
+  }
+
+  .loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px; 
+  }
+  
+  .error {
+    text-align: center;
+    color: red;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px 0;
+
+      p {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+.skills-form {
+  margin-top: 20px;
+}
+
+.skills-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.skills-form input {
+  width: 40%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.skills-form button {
+  width: 20%;
+  background-color: $green;
+  color: $white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.skills-form button:disabled {
+  background-color: $grey-background;
+  cursor: not-allowed;
+}
+
+.skill-bar {
+  height: 20px;
+  background-color: $white;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+#myProgress {
+  max-width: 100%;
+  background-color: $white;
+  border: 1px solid $grey-background;
+  height: 30px;
+  row-gap: 1px;
+}
+
+#myBar {
+  width: 100%;
+  height: 100%;
+  background-color: $green;
+  text-align: left;
+  line-height: 30px;
+  color: white;
+  border-radius: 5px;
+}
+.skill-progress {
+  height: 100%;
+  background-color: $green;
+}
+
+.btn-openSkills {
+  width: 20%;
+  background-color: $oxford;
+  color: $white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.btn-openSkills:hover {
+  background-color: darken($green, 10%);
+}
+
+.skills-stats {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.skill-stat {
+  flex-grow: 1;
+  padding-right: 10px;
+  background-color: $white;
+  border: none;
+}
+
+.skill-stat1 {
+  text-align: left;
+}
+
+.skill-stat2 {
+  text-align: center;
+}
+
+.skill-stat3 {
+  text-align: center;
+}
+
+.skill-stat4 {
+  text-align: right;
+}
+
+.skills-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skills-list li {
+  margin-bottom: 10px;
+} 
+
+.liners {
+  width: 100%;
+  height: 20px;
+  display: flex;
+}
+
+.liner1 {
+  border-bottom: 1px solid $oxford;
+  border-left: 1px solid $oxford;
+  border-right: 1px solid $oxford;
+  flex-grow: 1;
+  text-align: left;
+}
+
+.liner2 {
+  border-bottom: 1px solid $oxford;
+  border-left: none;
+  border-right: none;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.liner3 {
+  border-bottom: 1px solid $oxford;
+  border-left: 1px solid $oxford;
+  border-right: 1px solid $oxford;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.liner4 {
+  border-bottom: 1px solid $oxford;
+  border-left: 1px solid $oxford;
+  border-right: 1px solid $oxford;
+  flex-grow: 1;
+  text-align: right;
+}
+
+.timeline-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.error-message {
+  text-align: center;
+}
+
+
 @media only screen and (min-width: 140px) and (max-width: 767px) {
 
     .panel {
@@ -534,4 +748,23 @@
   }
 }
 
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.error {
+  text-align: center;
+  padding: 20px;
+  background-color: #ffcccc;
+  color: #990000;
+}
   

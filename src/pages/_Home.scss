@@ -16,7 +16,8 @@
 
 $main-font: 'Montserrat';
 $oxford: #222935;
-$green: #26C17E;
+$green: #022a88;
+//#26C17E;
 $lightgrey: #667081;
 $white: #fff;
 
@@ -60,7 +61,7 @@ $white: #fff;
 
     &:hover {
         background-color: $green;
-        color: $oxford;
+        color: $white;
     } 
 }
 

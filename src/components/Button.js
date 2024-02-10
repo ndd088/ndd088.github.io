@@ -4,7 +4,7 @@ import '../assets/styles/App.css';
 
 const Button = ({ icon, text, className, textClassName, onClick }) => (
   <button className={`btn ${className}`} onClick={onClick}>
-    {icon && <FontAwesomeIcon icon={icon} />}
+    {icon && <FontAwesomeIcon icon={icon} data-testid="button-icon" />}
     {text && <span className={`btn-text ${textClassName}`}>{text}</span>}
   </button>
 );
