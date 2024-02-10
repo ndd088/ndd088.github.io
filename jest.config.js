@@ -10,4 +10,5 @@ module.exports = {
     transformIgnorePatterns: [
       '/node_modules/(?!axios)/',
     ],
+    setupFilesAfterEnv: ['./setupTests.js'],
   };

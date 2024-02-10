@@ -1,27 +1,75 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchEducations } from '../redux/educationsSlice';
-import TimeLine from '../components/TimeLine';
+import React, { useEffect, useReducer } from 'react';
 import Loader from '../components/Loader';
 import '../assets/styles/App.css';
+import api from '../redux/api';
+
+const initialState = {
+  data: null,
+  loading: false,
+  error: null
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'FETCH_EDUCATIONS_REQUEST':
+      return { ...state, loading: true };
+    case 'FETCH_EDUCATIONS_SUCCESS':
+      return { ...state, loading: false, data: action.payload };
+    case 'FETCH_EDUCATIONS_FAILURE':
+      return { ...state, loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 
 const TimeLineContainer = ({ title }) => {
-  const dispatch = useDispatch();
-
-  const educationData = useSelector((state) => state.educations.data);
-  const loading = useSelector((state) => state.educations.status === 'loading');
-  const error = useSelector((state) => state.educations.error);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    dispatch(fetchEducations());
-  }, [dispatch]);
+    const fetchEducations = async () => {
+      dispatch({ type: 'FETCH_EDUCATIONS_REQUEST' });
+      try {
+        const response = await api.get('/educations');
+        dispatch({ type: 'FETCH_EDUCATIONS_SUCCESS', payload: response.data });
+      } catch (error) {
+        dispatch({ type: 'FETCH_EDUCATIONS_FAILURE', payload: 'An error occurred while fetching data' });
+      }
+    };
+    fetchEducations();
+  }, []);
+
+  const { data, loading, error } = state;
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return (
+      <div className="timeline-error">
+        <p className="error-message">{error}</p>
+      </div>
+    );
+  }
+
+  if (!data) {
+    return null;
+  }
 
   return (
-    <div>
+    <div className="timeline-container">
       <h2>{title}</h2>
-      {loading && <Loader />}
-      {!loading && !error && <TimeLine data={educationData} title={title} />}
-      {error && <p className="error-message">Something went wrong; please review your server connection!</p>}
+      <div className="timeline">
+        {data.map((event, index) => (
+          <div key={index} className="timeline-event">
+            <div className="event-date">{event.date}</div>
+            <div className="event-details">
+              <h3>{event.title}</h3>
+              <p>{event.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

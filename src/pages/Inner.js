@@ -32,7 +32,7 @@ const Inner = () => {
       <Element name="experience">
         <Expertise data={experienceData} title="Experience" />
       </Element>
-      <Element name="education" className="education">
+      <Element name="education" className="timeline-container">
         <TimeLine title="Education" />
       </Element>
       <Element name="skills" className="skills-container">

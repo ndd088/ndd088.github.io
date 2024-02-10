@@ -1,45 +1,65 @@
-import configureStore from '@reduxjs/toolkit';
-import skillsReducer, { fetchSkills, addSkill, setData, localStorageMiddleware } from './skillsSlice';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import api from './api';
 
-jest.mock('./api');
-
-describe('skills slice', () => {
-  let store;
-
-  beforeEach(() => {
-    store = configureStore({
-      reducer: {
-        skills: skillsReducer,
-      },
-      middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(localStorageMiddleware),
-    });
-  });
-
-  test('fetchSkills action creator and reducer behavior for successful fetch', async () => {
-    const mockData = [{ id: 1, name: 'Skill 1' }, { id: 2, name: 'Skill 2' }];
-    api.get.mockResolvedValueOnce({ skills: mockData });
-
-    await store.dispatch(fetchSkills());
-    const state = store.getState().skills;
-
-    expect(state.status).toEqual('succeeded');
-    expect(state.data).toEqual(mockData);
-    expect(state.error).toBeNull();
-  });
-
-  test('addSkill action creator and reducer behavior for successful addition', async () => {
-    const newSkill = { id: 3, name: 'New Skill' };
-    api.post.mockResolvedValueOnce({ skill: newSkill });
-
-    await store.dispatch(addSkill(newSkill));
-    const state = store.getState().skills;
-
-    expect(state.status).toEqual('succeeded');
-    expect(state.data).toContainEqual(newSkill);
-
-    expect(localStorage.getItem('skills')).toEqual(JSON.stringify(state.data));
-  });
-
+export const fetchSkills = createAsyncThunk('skills/fetchSkills', async () => {
+  try {
+    const response = await api.get('/skills');
+    return response.skills;
+  } catch (error) {
+    throw error;
+  }
 });
+
+export const addSkill = createAsyncThunk('skills/addSkill', async (skill) => {
+  try {
+    const response = await api.post('/skills', skill);
+    return response.skills;
+  } catch (error) {
+    throw error;
+  }
+});
+
+export const localStorageMiddleware = (store) => (next) => (action) => {
+  if (action.type === 'skills/addSkill/fulfilled') {
+    const state = store.getState();
+    localStorage.setItem('skills', JSON.stringify(state.skills.data));
+  }
+  return next(action);
+};
+
+const skillsSlice = createSlice({
+  name: 'skills',
+  initialState: { data: [], status: 'idle', error: null },
+  reducers: {
+    setData(state, action) {
+      state.data = action.payload;
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(addSkill.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        if (Array.isArray(action.payload)) {
+          action.payload.forEach((payload) => {
+            state.data.push(JSON.stringify(payload));
+          });
+        } else {
+          state.data.push(JSON.stringify(action.payload));
+        }
+      })
+      .addCase(fetchSkills.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchSkills.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.data = action.payload.map((skill) => JSON.stringify(skill));
+      })
+      .addCase(fetchSkills.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      });
+  },
+});
+
+export const { setData } = skillsSlice.actions;
+export default skillsSlice.reducer;

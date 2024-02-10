@@ -14,7 +14,7 @@ const TimeLine = ({ data, title, error }) => {
 
   return (
     <div className="timeline-container">
-      <h2>{title}</h2>
+      <h2>Education</h2>
       <div className="timeline">
         {data.map((event, index) => (
           <div key={index} className="timeline-event">

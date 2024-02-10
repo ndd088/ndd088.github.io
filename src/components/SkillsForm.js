@@ -67,7 +67,6 @@ const SkillsForm = ({ onClose, onAddSkill, visibleSkills }) => {
             max="100"
           />
           {formik.errors.skillRange && <div className="error">{formik.errors.skillRange}</div>}
-          {/* <div>Current Range: {formik.values.skillRange}%</div> */}
         </div>
 
         {formik.errors.submit && <div className="error">{formik.errors.submit}</div>}

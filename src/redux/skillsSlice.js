@@ -4,7 +4,7 @@ import api from './api';
 export const fetchSkills = createAsyncThunk('skills/fetchSkills', async () => {
   try {
     const response = await api.get('/skills');
-    return response.skills;
+    return response.data.skills;
   } catch (error) {
     throw error;
   }
@@ -13,14 +13,14 @@ export const fetchSkills = createAsyncThunk('skills/fetchSkills', async () => {
 export const addSkill = createAsyncThunk('skills/addSkill', async (skill) => {
   try {
     const response = await api.post('/skills', skill);
-    return response.skills;
+    return response.data.skills;
   } catch (error) {
     throw error;
   }
 });
 
 export const localStorageMiddleware = (store) => (next) => (action) => {
-  if (action.type === 'skills/addSkill/fulfilled') {
+  if (action.type === 'skills/addSkillLocally' || action.type === 'skills/addSkill/fulfilled') {
     const state = store.getState();
     localStorage.setItem('skills', JSON.stringify(state.skills.data));
   }
@@ -30,11 +30,7 @@ export const localStorageMiddleware = (store) => (next) => (action) => {
 const skillsSlice = createSlice({
   name: 'skills',
   initialState: { data: [], status: 'idle', error: null },
-  reducers: {
-    setData(state, action) {
-      state.data = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(addSkill.fulfilled, (state, action) => {
@@ -55,5 +51,5 @@ const skillsSlice = createSlice({
   },
 });
 
-export const { setData } = skillsSlice.actions;
+export const { addSkillLocally } = skillsSlice.actions;
 export default skillsSlice.reducer;

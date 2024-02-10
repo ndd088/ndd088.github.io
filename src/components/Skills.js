@@ -22,7 +22,12 @@ const Skills = () => {
   useEffect(() => {
     const storedSkills = localStorage.getItem('skills');
     if (storedSkills) {
-      dispatch({ type: 'skills/setData', payload: JSON.parse(storedSkills) });
+      try {
+        const parsedSkills = JSON.parse(storedSkills);
+        dispatch({ type: 'skills/setData', payload: parsedSkills });
+      } catch (error) {
+        console.error('Error parsing skills data:', error);
+      }
     }
   }, [dispatch]);
 
@@ -60,35 +65,27 @@ const Skills = () => {
       {status === 'loading' && <p>Loading skills...</p>}
       {status === 'failed' && <p>Error: {error}</p>}
       {status === 'succeeded' && (
-                    <div>
-                    <div className="liners">
-                      <span className="liner1"></span>
-                      <span className="liner2"></span>
-                      <span className="liner3"></span>
-                      </div>
-        <div className="skills-stats">
-          
-          {(
-            <>
-
-              <div className="skill-stat skill-stat1">Beginner</div>
-              <div className="skill-stat skill-stat2">Proficient</div>
-              <div className="skill-stat skill-stat3">Expert</div>
-              <div className="skill-stat skill-stat4">Master</div>
-            </>
-          )}
+        <div>
+          <div className="liners">
+            <span className="liner1"></span>
+            <span className="liner2"></span>
+            <span className="liner3"></span>
+          </div>
+          <div className="skills-stats">
+            <div className="skill-stat skill-stat1">Beginner</div>
+            <div className="skill-stat skill-stat2">Proficient</div>
+            <div className="skill-stat skill-stat3">Expert</div>
+            <div className="skill-stat skill-stat4">Master</div>
+          </div>
           <ul className="skills-list">
-            {data.concat(newSkills).map((skill, index) => (
+            {data && newSkills && data.concat(newSkills).map((skill, index) => (
               <li key={index}>
                 {skill && (
-                  <>
-                    <ProgressBar isVisible={!isFormOpen} progress={skill.range} skillName={skill.name} />
-                  </>
+                  <ProgressBar isVisible={!isFormOpen} progress={skill.range} skillName={skill.name} />
                 )}
               </li>
             ))}
           </ul>
-        </div>
         </div>
       )}
     </div>
