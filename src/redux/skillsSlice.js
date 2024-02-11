@@ -20,16 +20,24 @@ export const addSkill = createAsyncThunk('skills/addSkill', async (skill) => {
 });
 
 export const localStorageMiddleware = (store) => (next) => (action) => {
-  if (action.type === 'skills/addSkillLocally' || action.type === 'skills/addSkill/fulfilled') {
+  const result = next(action);
+  if (
+    action.type === fetchSkills.fulfilled.type ||
+    action.type === addSkill.fulfilled.type
+  ) {
     const state = store.getState();
     localStorage.setItem('skills', JSON.stringify(state.skills.data));
   }
-  return next(action);
+  return result;
 };
 
 const skillsSlice = createSlice({
   name: 'skills',
-  initialState: { data: [], status: 'idle', error: null },
+  initialState: {
+    data: JSON.parse(localStorage.getItem('skills')) || [],
+    status: 'idle',
+    error: null
+  },
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -51,5 +59,4 @@ const skillsSlice = createSlice({
   },
 });
 
-export const { addSkillLocally } = skillsSlice.actions;
 export default skillsSlice.reducer;

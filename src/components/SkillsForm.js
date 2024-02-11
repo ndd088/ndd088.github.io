@@ -50,6 +50,7 @@ const SkillsForm = ({ onClose, onAddSkill, visibleSkills }) => {
             type="text"
             id="skillName"
             name="skillName"
+            placeholder="Enter skill name"
             onChange={formik.handleChange}
             value={formik.values.skillName}
           />
@@ -62,6 +63,7 @@ const SkillsForm = ({ onClose, onAddSkill, visibleSkills }) => {
             type="number"
             id="skillRange"
             name="skillRange"
+            placeholder="Enter skill range"
             onChange={formik.handleChange}
             value={formik.values.skillRange}
             max="100"

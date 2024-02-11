@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import '../assets/styles/App.css';
+import { experienceData } from '../consts'; 
 
-const Expertise = ({ data, title }) => {
+const Expertise = ({ title }) => { 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(false);
-  }, [data]);
+  }, []);
 
   return (
     <div>
@@ -15,12 +16,12 @@ const Expertise = ({ data, title }) => {
         <p>Loading expertise data...</p>
       ) : (
         <ul className="expertise-list">
-          {data.map((exp, index) => (
+          {experienceData.map((exp, index) => (
             <li key={index}>
               <div>{exp.date}</div>
               <div>
-                <strong>{exp.title}</strong>
-                <p>{exp.description}</p>
+                <strong>{exp.info.company}</strong> 
+                <p>{exp.info.description}</p>
               </div>
             </li>
           ))}

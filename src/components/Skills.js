@@ -4,6 +4,8 @@ import SkillsForm from './SkillsForm';
 import ProgressBar from './ProgressBar';
 import { fetchSkills, addSkill } from '../redux/skillsSlice';
 import '../assets/styles/App.css';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Skills = () => {
   const dispatch = useDispatch();
@@ -60,7 +62,7 @@ const Skills = () => {
   return (
     <div className="skills-container">
       <h2>Skills</h2>
-      <button onClick={handleOpenForm} className="btn-openSkills">Open Edit</button>
+      <button onClick={handleOpenForm} className="btn-openSkills"><FontAwesomeIcon className="btn-openSkills-icon" icon={faEdit} />Open Edit</button>
       {isFormOpen && <SkillsForm onClose={handleCloseForm} onAddSkill={handleAddSkill} />}
       {status === 'loading' && <p>Loading skills...</p>}
       {status === 'failed' && <p>Error: {error}</p>}

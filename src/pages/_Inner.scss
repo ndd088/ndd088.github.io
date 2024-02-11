@@ -34,7 +34,7 @@
     width: 80%;
     display: grid;
     grid-template-columns: 2% 98%;
-    grid-template-rows: 15% 10% 15% 25% 20% 15%;
+    grid-template-rows: 10% 10% 15% 25% 15% 10%;
     row-gap: 2%;
     box-sizing: border-box;
     transition: margin-left 0.2s; 
@@ -508,6 +508,12 @@
   grid-row: 4;
   grid-column: 2;
 
+  .btn-openSkills-icon {
+    color: $white;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+
   h2 {
     color: $green;
     padding-top: 30px;
@@ -559,6 +565,7 @@
 }
 
 .skills-form button {
+  margin-bottom: 20px;
   width: 20%;
   background-color: $green;
   color: $white;
@@ -606,6 +613,7 @@
 }
 
 .btn-openSkills {
+  margin-left: 80%;
   width: 20%;
   background-color: $oxford;
   color: $white;
