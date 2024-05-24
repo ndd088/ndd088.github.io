@@ -1,20 +1,29 @@
 export const experienceData = [
   {
-    date: '2013-2014', 
+    date: '13+ years in', 
     info: {
-      company: 'Google',
-      job: 'Front-end developer / php programmer',
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor'
+      company: 'Project and Product Management',
+      job: 'Project and Product Management',
+      description: 'My score is 99% successful cases out of hundreds of projects.'
     }
   },
   {
-    date: '2012-2013', 
+    date: '16+ years in', 
     info: {
-      company: 'Twitter',
-      job: 'Web developer',
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor'
+      company: 'Sales',
+      job: '',
+      description: 'My personal best sale is EUR1600000 and my teams best result is EUR2400000/month.'
+    }
+  },
+  {
+    date: '12+ years in', 
+    info: {
+      company: 'Business Development',
+      job: '',
+      description: 'I know everything about business management, including technical, financial, marketing and legal support.'
     }
   }
+
   ];
 
   /*export const educationData = [

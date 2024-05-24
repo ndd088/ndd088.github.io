@@ -6,24 +6,29 @@ import Navigation from './Navigation';
 import userAvatar from '../assets/images/me-round.png';
 import { usePanelContext } from '../contexts/PanelContext';
 import '../assets/styles/App.css';
-import innerBackground from '../assets/images/background.jpg';
+import innerBackground from '../assets/images/background.mp4';
 
 const Panel = () => {
   const { isPanelOpen } = usePanelContext();
   const panelClassName = `panel ${isPanelOpen ? 'open' : ''}`;
 
-  const panelStyles = {
-    backgroundImage: `url(${innerBackground})`,
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    minHeight: "100vh",
-  };
-  
   return (
-    <aside className={panelClassName} style={panelStyles} >
-      <PhotoBox name="Nana Dzigua" avatar={userAvatar} />
-      <Navigation />
-      <Button icon={faChevronLeft} text="Go back" className="go-back-icon" textClassName="go-back-text" onClick={() => window.location.href = "/"} />
+    <aside className={panelClassName}>
+      <video autoPlay loop muted className="panel-video">
+        <source src={innerBackground} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div className="panel-content">
+        <PhotoBox name="Nana Dzigua" avatar={userAvatar} />
+        <Navigation />
+        <Button 
+          icon={faChevronLeft} 
+          text="Go back" 
+          className="go-back-icon" 
+          textClassName="go-back-text" 
+          onClick={() => window.location.href = "/"} 
+        />
+      </div>
     </aside>
   );
 };

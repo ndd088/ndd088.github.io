@@ -9,16 +9,16 @@ const Address = () => (
     <h2>Contacts</h2>
     <p>
       <img src={phoneIcon} alt="Phone Icon" />
-      <a href="tel:+1234567890">123-456-7890</a>
+      <a href="tel:+380664294967">Call me</a>
     </p>
     <p>
       <img src={emailIcon} alt="Email Icon" />
-      <a href="mailto:john.doe@example.com">john.doe@example.com</a>
+      <a href="mailto:nddzigua@icloud.com">Email me</a>
     </p>
     <p>
       <img src={skypeIcon} alt="Skype Icon" />
-      <span className="skype">Skype: </span>
-      <a href="skype:john.doe?call">john.doe</a>
+      <span className="skype"></span>
+      <a href="skype:nanadzigua?call">Skype me</a>
     </p>
   </div>
 );

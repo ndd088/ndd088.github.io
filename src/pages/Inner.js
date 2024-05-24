@@ -2,8 +2,8 @@ import React from 'react';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { Element } from 'react-scroll';
 import Expertise from '../components/Expertise';
-import Skills from '../components/Skills';
-import TimeLine from '../components/TimeLine';
+import Form from '../components/Form';
+import MyTools from '../components/Tools';
 import Portfolio from '../components/Portfolio';
 import AboutMe from '../components/AboutMe';
 import { experienceData, feedbackData } from '../consts';
@@ -32,20 +32,14 @@ const Inner = () => {
       <Element name="experience">
         <Expertise data={experienceData} title="Experience" />
       </Element>
-      <Element name="education" className="timeline-container">
-        <TimeLine title="Education" />
-      </Element>
-      <Element name="skills" className="skills-container">
-        <Skills title="Skills" />
-      </Element>
+     <Element name="tools" className="my-tools-container">
+        <MyTools title="My Tools" />
+     </Element>
       <Element name="portfolio" className="portfolio-main">
         <Portfolio title="Portfolio" />
       </Element>
       <Element name="contacts" className="contacts">
         <Address title="Contacts" />
-      </Element>
-      <Element name="feedback" className="feedback">
-        <Feedback data={feedbackData} title="Feedbacks"/>
       </Element>
     </div>
   );

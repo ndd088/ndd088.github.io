@@ -10,7 +10,7 @@ const Expertise = ({ title }) => {
   }, []);
 
   return (
-    <div>
+    <div className="experience">
       <h2>{title}</h2>
       {loading ? (
         <p>Loading expertise data...</p>
